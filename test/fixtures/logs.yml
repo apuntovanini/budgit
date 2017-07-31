@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  chapter: one
+  budget: one
+  kind: 1
+  value: 1
+  description: MyText
+
+two:
+  chapter: two
+  budget: two
+  kind: 1
+  value: 1
+  description: MyText

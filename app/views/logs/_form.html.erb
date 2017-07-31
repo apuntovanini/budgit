@@ -1,0 +1,23 @@
+<%= simple_form_for(log, local: true) do |f| %>
+  <% if log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(log.errors.count, "error") %> prohibited this log from being saved:</h2>
+
+      <ul>
+      <% log.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.association :chapter %>
+  <%= f.association :budget %>
+  <%= f.input :kind, collection: Log.kinds.keys %>
+  <%= f.input :value %>
+  <%= f.input :description %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
