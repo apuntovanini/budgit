@@ -1,0 +1,53 @@
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Budget</th>
+      <th>Actual</th>
+      <th>Forecast</th>
+      <th>Remaining</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- Chapter.income.includes(:logs).each do |c| -%>
+      <%- budget = c.logs.where(kind: :budget).first.value -%>
+      <%- actual = c.logs.where(kind: :actual).sum(:value) -%>
+      <%- forecast = c.logs.where(kind: :forecast).sum(:value) -%>
+      <tr>
+        <td><%= c.name %></td>
+        <td><%= number_to_currency(budget / 100.00) %></td>
+        <td><%= number_to_currency(actual / 100.00) %></td>
+        <td><%= number_to_currency(forecast / 100.00) %></td>
+        <td><%= number_to_currency((budget - actual -forecast) / 100.00)  %></td>
+      </tr>
+    <%- end -%>
+  </tbody>
+</table>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Budget</th>
+      <th>Actual</th>
+      <th>Forecast</th>
+      <th>Remaining</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- Chapter.cost.includes(:logs).each do |c| -%>
+      <%- budget = c.logs.where(kind: :budget).first.value -%>
+      <%- actual = c.logs.where(kind: :actual).sum(:value) -%>
+      <%- forecast = c.logs.where(kind: :forecast).sum(:value) -%>
+      <tr>
+        <td><%= c.name %></td>
+        <td><%= number_to_currency(budget / 100.00) %></td>
+        <td><%= number_to_currency(actual / 100.00) %></td>
+        <td><%= number_to_currency(forecast / 100.00) %></td>
+        <td><%= number_to_currency((budget - actual -forecast) / 100.00)  %></td>
+      </tr>
+    <%- end -%>
+  </tbody>
+</table>

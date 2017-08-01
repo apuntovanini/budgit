@@ -2,7 +2,7 @@
 
 <h1>Logs</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Chapter</th>
@@ -20,7 +20,7 @@
         <td><%= log.chapter.name %></td>
         <td><%= log.budget.name %></td>
         <td><%= log.kind %></td>
-        <td><%= log.value %></td>
+        <td><%= number_to_currency(log.value / 100.00) %></td>
         <td><%= log.description %></td>
         <td><%= link_to 'Show', log %></td>
         <td><%= link_to 'Edit', edit_log_path(log) %></td>
